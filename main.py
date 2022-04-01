@@ -110,7 +110,8 @@ def update_weekday_info(db, lastupdate):
         try:
             day = convert_date(t[0].strip())
             name = t[1].strip()
-        except (ValueError, IndexError):
+        except (ValueError, IndexError) as e:
+            import sys
             tb = sys.exc_info()[2]
             ermsg = e.with_traceback(tb)
             print(u'日付フォーマットがおかしい{0}: {1}'.format(l, ermsg))
